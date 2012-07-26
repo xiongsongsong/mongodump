@@ -7,7 +7,11 @@
  */
 
 var exec = require('child_process').exec;
+
 function mongodump() {
     exec('mongodump -d fed -o ~/Ubuntu \\ One/Database/' + Date.now());
+    setTimeout(mongodump, 60000);
 }
-setInterval(mongodump, 60000);
+
+mongodump();
+
