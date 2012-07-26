@@ -9,8 +9,15 @@
 var exec = require('child_process').exec;
 
 function mongodump() {
-    exec('mongodump -d fed -o ~/Ubuntu \\ One/Database/' + Date.now());
-    setTimeout(mongodump, 60000);
+    console.log(Date.now('mongodump start!'))
+    exec('mongodump -d fed -o ~/Ubuntu\\ One/Database/' + Date.now(),function(err,stdout){
+        if(err) {
+            console.log(err);
+        }else{
+            console.log('Success!\t'+Date.now()+'\n'+stdout);
+        }
+    });
+    setTimeout(mongodump, 86400000);
 }
 
 mongodump();
