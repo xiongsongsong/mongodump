@@ -9,8 +9,13 @@
 var exec = require('child_process').exec;
 
 function mongodump() {
-    console.log(Date.now('mongodump start!'))
-    exec('mongodump -d fed -o ~/Ubuntu\\ One/Database/' + Date.now(),function(err,stdout){
+    var date=new Date();
+    exec('mongodump -d fed -o ~/Ubuntu\\ One/Database/' + 
+        date.getFullYear()+'_'+
+        (date.getMonth()+1)+'_'+
+        date.getDate()+'_'+
+        date.getHours()+'_'+
+        date.getMinutes(),function(err,stdout){
         if(err) {
             console.log(err);
         }else{
